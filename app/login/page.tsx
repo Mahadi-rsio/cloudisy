@@ -5,6 +5,14 @@ import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from
 import { getSession, signIn } from "@/lib/auth-client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import LoginLayout from "./layout";
+
+
+
+
+
+
+
 
 interface ParticleProps {
     x: number
@@ -262,12 +270,13 @@ export default function App() {
     const footerLinks: string[] = ["Privacy", "Security", "Help"];
 
     return (
-        <div
-            className="min-h-screen w-full flex items-center justify-center relative overflow-hidden"
-            style={{ background: "linear-gradient(135deg, #0a0612 0%, #0d1117 50%, #050b18 100%)", fontFamily: "'DM Sans', sans-serif" }}
-            onMouseMove={handleMouseMove}
-        >
-            <style>{`
+        <LoginLayout>
+            <div
+                className="min-h-screen w-full flex items-center justify-center relative overflow-hidden"
+                style={{ background: "linear-gradient(135deg, #0a0612 0%, #0d1117 50%, #050b18 100%)", fontFamily: "'DM Sans', sans-serif" }}
+                onMouseMove={handleMouseMove}
+            >
+                <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
         @keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
         @keyframes borderGlow {
@@ -284,249 +293,250 @@ export default function App() {
         }
       `}</style>
 
-            {/* Mouse-following glow */}
-            <motion.div
-                className="fixed pointer-events-none"
-                style={{
-                    width: 600, height: 600, borderRadius: "50%",
-                    background: "radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%)",
-                    x: glowX, y: glowY, zIndex: 0,
-                }}
-            />
+                {/* Mouse-following glow */}
+                <motion.div
+                    className="fixed pointer-events-none"
+                    style={{
+                        width: 600, height: 600, borderRadius: "50%",
+                        background: "radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%)",
+                        x: glowX, y: glowY, zIndex: 0,
+                    }}
+                />
 
-            {/* Particles */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                {particles.map((p, i) => <Particle key={i} {...p} />)}
-            </div>
+                {/* Particles */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                    {particles.map((p, i) => <Particle key={i} {...p} />)}
+                </div>
 
-            {/* Grid overlay */}
-            <div className="absolute inset-0 pointer-events-none" style={{
-                backgroundImage: "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)",
-                backgroundSize: "60px 60px",
-            }} />
+                {/* Grid overlay */}
+                <div className="absolute inset-0 pointer-events-none" style={{
+                    backgroundImage: "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)",
+                    backgroundSize: "60px 60px",
+                }} />
 
-            {/* Scanline */}
-            <motion.div
-                className="absolute left-0 right-0 h-px pointer-events-none"
-                style={{ background: "linear-gradient(90deg, transparent, rgba(167,139,250,0.3), transparent)", zIndex: 1 }}
-                animate={{ y: ["-10vh", "110vh"] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear", repeatDelay: 4 }}
-            />
+                {/* Scanline */}
+                <motion.div
+                    className="absolute left-0 right-0 h-px pointer-events-none"
+                    style={{ background: "linear-gradient(90deg, transparent, rgba(167,139,250,0.3), transparent)", zIndex: 1 }}
+                    animate={{ y: ["-10vh", "110vh"] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "linear", repeatDelay: 4 }}
+                />
 
-            {/* Ambient blobs */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%)", filter: "blur(40px)" }} />
-            <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%)", filter: "blur(40px)" }} />
+                {/* Ambient blobs */}
+                <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%)", filter: "blur(40px)" }} />
+                <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%)", filter: "blur(40px)" }} />
 
-            {/* Floating badges */}
-            <FloatingBadge delay={0.5} x="8%" y="20%"><span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" /> 98% uptime SLA</FloatingBadge>
-            <FloatingBadge delay={1.2} x="75%" y="15%">🔒 SOC 2 Certified</FloatingBadge>
-            <FloatingBadge delay={0.8} x="80%" y="70%">⚡ 12ms avg latency</FloatingBadge>
-            <FloatingBadge delay={1.5} x="5%" y="72%">🌍 Global CDN</FloatingBadge>
+                {/* Floating badges */}
+                <FloatingBadge delay={0.5} x="8%" y="20%"><span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" /> 98% uptime SLA</FloatingBadge>
+                <FloatingBadge delay={1.2} x="75%" y="15%">🔒 SOC 2 Certified</FloatingBadge>
+                <FloatingBadge delay={0.8} x="80%" y="70%">⚡ 12ms avg latency</FloatingBadge>
+                <FloatingBadge delay={1.5} x="5%" y="72%">🌍 Global CDN</FloatingBadge>
 
-            {/* Card */}
-            <motion.div
-                className="relative z-10 w-full max-w-md mx-4"
-                initial={{ opacity: 0, y: 30, scale: 0.96 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            >
-                {/* Animated border wrapper */}
-                <div className="relative rounded-2xl p-px" style={{ background: "linear-gradient(135deg, rgba(124,58,237,0.6), rgba(37,99,235,0.4), rgba(56,189,248,0.3), rgba(124,58,237,0.6))" }}>
-                    <div
-                        className="relative rounded-2xl p-8 card-glow"
-                        style={{ background: "linear-gradient(145deg, rgba(15,10,30,0.97) 0%, rgba(10,15,25,0.98) 100%)", backdropFilter: "blur(20px)" }}
-                    >
-                        {/* Top bar */}
-                        <div className="flex items-center justify-between mb-8">
-                            <Logo />
+                {/* Card */}
+                <motion.div
+                    className="relative z-10 w-full max-w-md mx-4"
+                    initial={{ opacity: 0, y: 30, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                >
+                    {/* Animated border wrapper */}
+                    <div className="relative rounded-2xl p-px" style={{ background: "linear-gradient(135deg, rgba(124,58,237,0.6), rgba(37,99,235,0.4), rgba(56,189,248,0.3), rgba(124,58,237,0.6))" }}>
+                        <div
+                            className="relative rounded-2xl p-8 card-glow"
+                            style={{ background: "linear-gradient(145deg, rgba(15,10,30,0.97) 0%, rgba(10,15,25,0.98) 100%)", backdropFilter: "blur(20px)" }}
+                        >
+                            {/* Top bar */}
+                            <div className="flex items-center justify-between mb-8">
+                                <Logo />
+                                <motion.div
+                                    className="flex items-center gap-1.5 text-xs text-emerald-400 font-medium bg-emerald-400/10 border border-emerald-400/20 rounded-full px-3 py-1"
+                                    animate={{ opacity: [0.7, 1, 0.7] }}
+                                    transition={{ duration: 2.5, repeat: Infinity }}
+                                >
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+                                    Secure
+                                </motion.div>
+                            </div>
+
+                            {/* Headline */}
+                            <div className="mb-8 text-center">
+                                <motion.h1
+                                    className="text-3xl font-bold mb-2 shimmer-text"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.2 }}
+                                    style={{ letterSpacing: "-0.03em" }}
+                                >
+                                    Welcome back
+                                </motion.h1>
+                                <motion.p
+                                    className="text-sm text-white/45"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.35 }}
+                                >
+                                    Sign in to your workspace — no password required
+                                </motion.p>
+                            </div>
+
+                            {/* Webauthin */}
+                            <input
+                                type="text"
+                                autoComplete="username webauthn"
+                                className="hidden"
+                            />
+
+                            {/* Providers */}
+                            <div className="space-y-3">
+                                {providers.map((p: Provider, i: number) => (
+                                    <motion.div
+                                        key={p.id}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.4 + i * 0.08 }}
+                                    >
+                                        <div className="relative">
+                                            <GlowButton
+
+                                                onClick={() => handleLogin(p.id as ProviderType)}
+                                                variant={p.id === "passkey" ? "primary" : "default"}
+                                                className={!agreed ? "opacity-50 cursor-not-allowed" : ""}
+                                            >
+                                                <span className="flex-shrink-0">{p.icon}</span>
+                                                <span>{p.label}</span>
+                                                <AnimatePresence>
+                                                    {activeProvider === p.id && loading && (
+                                                        <motion.span
+                                                            className="absolute right-4"
+                                                            initial={{ opacity: 0, scale: 0 }}
+                                                            animate={{ opacity: 1, scale: 1 }}
+                                                            exit={{ opacity: 0, scale: 0 }}
+                                                        >
+                                                            <motion.div
+                                                                className="w-4 h-4 rounded-full border-2 border-white/40 border-t-white"
+                                                                animate={{ rotate: 360 }}
+                                                                transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                                                            />
+                                                        </motion.span>
+                                                    )}
+                                                    {successProvider === p.id && (
+                                                        <motion.span
+                                                            className="absolute right-4 text-emerald-400 text-base"
+                                                            initial={{ scale: 0 }}
+                                                            animate={{ scale: 1 }}
+                                                            transition={{ type: "spring", stiffness: 300 }}
+                                                        >
+                                                            ✓
+                                                        </motion.span>
+                                                    )}
+                                                </AnimatePresence>
+                                            </GlowButton>
+
+                                            {p.id === "passkey" && (
+                                                <div className="absolute inset-0 rounded-xl pointer-events-none" style={{
+                                                    background: "radial-gradient(ellipse at 50% 100%, rgba(124,58,237,0.25) 0%, transparent 70%)",
+                                                    filter: "blur(8px)",
+                                                    zIndex: -1,
+                                                }} />
+                                            )}
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+
+                            {/* Divider */}
                             <motion.div
-                                className="flex items-center gap-1.5 text-xs text-emerald-400 font-medium bg-emerald-400/10 border border-emerald-400/20 rounded-full px-3 py-1"
-                                animate={{ opacity: [0.7, 1, 0.7] }}
-                                transition={{ duration: 2.5, repeat: Infinity }}
-                            >
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
-                                Secure
-                            </motion.div>
-                        </div>
-
-                        {/* Headline */}
-                        <div className="mb-8 text-center">
-                            <motion.h1
-                                className="text-3xl font-bold mb-2 shimmer-text"
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 }}
-                                style={{ letterSpacing: "-0.03em" }}
-                            >
-                                Welcome back
-                            </motion.h1>
-                            <motion.p
-                                className="text-sm text-white/45"
+                                className="flex items-center gap-3 my-6"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ delay: 0.35 }}
+                                transition={{ delay: 0.75 }}
                             >
-                                Sign in to your workspace — no password required
-                            </motion.p>
-                        </div>
+                                <div className="flex-1 h-px bg-white/10" />
+                                <span className="text-xs text-white/30 font-medium">Protected by NexusAI</span>
+                                <div className="flex-1 h-px bg-white/10" />
+                            </motion.div>
 
-                        {/* Webauthin */}
-                        <input
-                            type="text"
-                            autoComplete="username webauthn"
-                            className="hidden"
-                        />
-
-                        {/* Providers */}
-                        <div className="space-y-3">
-                            {providers.map((p: Provider, i: number) => (
-                                <motion.div
-                                    key={p.id}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.4 + i * 0.08 }}
+                            {/* Terms checkbox */}
+                            <motion.div
+                                className="flex items-start gap-3"
+                                initial={{ opacity: 0, y: 8 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.85 }}
+                            >
+                                <button
+                                    onClick={() => setAgreed((prev: boolean) => !prev)}
+                                    className="relative flex-shrink-0 mt-0.5 w-5 h-5 rounded-md border transition-all duration-200"
+                                    style={{
+                                        borderColor: agreed ? "rgba(124,58,237,0.8)" : "rgba(255,255,255,0.2)",
+                                        background: agreed ? "rgba(124,58,237,0.25)" : "transparent",
+                                        boxShadow: agreed ? "0 0 10px rgba(124,58,237,0.4)" : "none",
+                                    }}
                                 >
-                                    <div className="relative">
-                                        <GlowButton
-
-                                            onClick={() => handleLogin(p.id as ProviderType)}
-                                            variant={p.id === "passkey" ? "primary" : "default"}
-                                            className={!agreed ? "opacity-50 cursor-not-allowed" : ""}
-                                        >
-                                            <span className="flex-shrink-0">{p.icon}</span>
-                                            <span>{p.label}</span>
-                                            <AnimatePresence>
-                                                {activeProvider === p.id && loading && (
-                                                    <motion.span
-                                                        className="absolute right-4"
-                                                        initial={{ opacity: 0, scale: 0 }}
-                                                        animate={{ opacity: 1, scale: 1 }}
-                                                        exit={{ opacity: 0, scale: 0 }}
-                                                    >
-                                                        <motion.div
-                                                            className="w-4 h-4 rounded-full border-2 border-white/40 border-t-white"
-                                                            animate={{ rotate: 360 }}
-                                                            transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-                                                        />
-                                                    </motion.span>
-                                                )}
-                                                {successProvider === p.id && (
-                                                    <motion.span
-                                                        className="absolute right-4 text-emerald-400 text-base"
-                                                        initial={{ scale: 0 }}
-                                                        animate={{ scale: 1 }}
-                                                        transition={{ type: "spring", stiffness: 300 }}
-                                                    >
-                                                        ✓
-                                                    </motion.span>
-                                                )}
-                                            </AnimatePresence>
-                                        </GlowButton>
-
-                                        {p.id === "passkey" && (
-                                            <div className="absolute inset-0 rounded-xl pointer-events-none" style={{
-                                                background: "radial-gradient(ellipse at 50% 100%, rgba(124,58,237,0.25) 0%, transparent 70%)",
-                                                filter: "blur(8px)",
-                                                zIndex: -1,
-                                            }} />
+                                    <AnimatePresence>
+                                        {agreed && (
+                                            <motion.svg
+                                                className="absolute inset-0 m-auto"
+                                                width="12" height="12" viewBox="0 0 12 12"
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                            >
+                                                <motion.path
+                                                    d="M2 6L5 9L10 3"
+                                                    stroke="rgba(167,139,250,1)"
+                                                    strokeWidth="1.8"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    fill="none"
+                                                    initial={{ pathLength: 0 }}
+                                                    animate={{ pathLength: 1 }}
+                                                    transition={{ duration: 0.25 }}
+                                                />
+                                            </motion.svg>
                                         )}
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
+                                    </AnimatePresence>
+                                </button>
+                                <p className="text-xs text-white/40 leading-relaxed">
+                                    I agree to the{" "}
+                                    <a href="#" className="text-violet-400 hover:text-violet-300 transition-colors underline underline-offset-2">Terms of Service</a>
+                                    {" "}and{" "}
+                                    <a href="#" className="text-violet-400 hover:text-violet-300 transition-colors underline underline-offset-2">Privacy Policy</a>
+                                    . I understand my data is processed securely.
+                                </p>
+                            </motion.div>
 
-                        {/* Divider */}
-                        <motion.div
-                            className="flex items-center gap-3 my-6"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.75 }}
-                        >
-                            <div className="flex-1 h-px bg-white/10" />
-                            <span className="text-xs text-white/30 font-medium">Protected by NexusAI</span>
-                            <div className="flex-1 h-px bg-white/10" />
-                        </motion.div>
+                            {/* Warning */}
+                            <AnimatePresence>
+                                {!agreed && (
+                                    <motion.p
+                                        className="text-xs text-amber-400/60 mt-2 ml-8"
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: "auto" }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                    >
+                                        ↑ Accept terms to continue
+                                    </motion.p>
+                                )}
+                            </AnimatePresence>
 
-                        {/* Terms checkbox */}
-                        <motion.div
-                            className="flex items-start gap-3"
-                            initial={{ opacity: 0, y: 8 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.85 }}
-                        >
-                            <button
-                                onClick={() => setAgreed((prev: boolean) => !prev)}
-                                className="relative flex-shrink-0 mt-0.5 w-5 h-5 rounded-md border transition-all duration-200"
-                                style={{
-                                    borderColor: agreed ? "rgba(124,58,237,0.8)" : "rgba(255,255,255,0.2)",
-                                    background: agreed ? "rgba(124,58,237,0.25)" : "transparent",
-                                    boxShadow: agreed ? "0 0 10px rgba(124,58,237,0.4)" : "none",
-                                }}
+                            {/* Footer links */}
+                            <motion.div
+                                className="mt-6 flex items-center justify-center gap-4"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 1 }}
                             >
-                                <AnimatePresence>
-                                    {agreed && (
-                                        <motion.svg
-                                            className="absolute inset-0 m-auto"
-                                            width="12" height="12" viewBox="0 0 12 12"
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            exit={{ opacity: 0 }}
-                                        >
-                                            <motion.path
-                                                d="M2 6L5 9L10 3"
-                                                stroke="rgba(167,139,250,1)"
-                                                strokeWidth="1.8"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                fill="none"
-                                                initial={{ pathLength: 0 }}
-                                                animate={{ pathLength: 1 }}
-                                                transition={{ duration: 0.25 }}
-                                            />
-                                        </motion.svg>
-                                    )}
-                                </AnimatePresence>
-                            </button>
-                            <p className="text-xs text-white/40 leading-relaxed">
-                                I agree to the{" "}
-                                <a href="#" className="text-violet-400 hover:text-violet-300 transition-colors underline underline-offset-2">Terms of Service</a>
-                                {" "}and{" "}
-                                <a href="#" className="text-violet-400 hover:text-violet-300 transition-colors underline underline-offset-2">Privacy Policy</a>
-                                . I understand my data is processed securely.
-                            </p>
-                        </motion.div>
-
-                        {/* Warning */}
-                        <AnimatePresence>
-                            {!agreed && (
-                                <motion.p
-                                    className="text-xs text-amber-400/60 mt-2 ml-8"
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: "auto" }}
-                                    exit={{ opacity: 0, height: 0 }}
-                                >
-                                    ↑ Accept terms to continue
-                                </motion.p>
-                            )}
-                        </AnimatePresence>
-
-                        {/* Footer links */}
-                        <motion.div
-                            className="mt-6 flex items-center justify-center gap-4"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 1 }}
-                        >
-                            {footerLinks.map((item: string) => (
-                                <a key={item} href="#" className="text-xs text-white/25 hover:text-white/50 transition-colors">
-                                    {item}
-                                </a>
-                            ))}
-                        </motion.div>
+                                {footerLinks.map((item: string) => (
+                                    <a key={item} href="#" className="text-xs text-white/25 hover:text-white/50 transition-colors">
+                                        {item}
+                                    </a>
+                                ))}
+                            </motion.div>
+                        </div>
                     </div>
-                </div>
-            </motion.div>
-        </div>
+                </motion.div>
+            </div>
+        </LoginLayout>
     );
 }
 
