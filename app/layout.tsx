@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 
-// const poppins = Poppins({
-//     subsets: ['latin'],
-//     display: 'swap',
-//     weight: ['400', '700'],
-// });
-//
+
 
 export const metadata: Metadata = {
     title: "Cloudisy – Fast Static & Next.js Hosting Platform for Developers in Bangladesh",
@@ -30,6 +24,40 @@ export const metadata: Metadata = {
 
         "best vercel alternative 2026", "cheaper netlify alternative", "digitalocean alternative for students", "heroku replacement for apps", "modern web infrastructure", "cloud hosting for beginners", "easy web hosting bangladesh", "professional cloud services", "web app scaling solutions", "cloudisy cloud features", "deploying web apps 2026", "nextjs 15 hosting", "nextjs 16 hosting", "optimized react hosting", "jamstack hosting platform"
     ],
+
+    authors: [{ name: "Cloudisy Team" }],
+    creator: "Cloudisy",
+
+    openGraph: {
+        title: "Cloudisy — Modern Hosting Platform",
+        description:
+            "Deploy static sites and Next.js apps instantly. Built for developers, students, and startups in Bangladesh.",
+        url: "https://cloudisy.top",
+        siteName: "Cloudisy",
+        locale: "en_US",
+        type: "website",
+    },
+
+    twitter: {
+        card: "summary_large_image",
+        title: "Cloudisy Hosting Platform",
+        description:
+            "Deploy static and Next.js apps instantly. Hosting built for developers in Bangladesh.",
+    },
+
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
+    },
+
+
     icons: {
         icon: '/favicon.ico',
         shortcut: '/favicon-16x16.png',
@@ -47,6 +75,26 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        name: "Cloudisy",
+                        applicationCategory: "DeveloperApplication",
+                        operatingSystem: "Web",
+                        url: "https://cloudisy.top",
+                        description:
+                            "Cloudisy is a hosting platform for developers in Bangladesh to deploy static and Next.js apps easily.",
+                        offers: {
+                            "@type": "Offer",
+                            price: "1",
+                            priceCurrency: "USD"
+                        }
+                    }),
+                }}
+            />
             <body
                 className={`antialiased`}
             >

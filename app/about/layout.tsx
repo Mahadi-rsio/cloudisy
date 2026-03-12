@@ -1,8 +1,6 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://cloudisy.top"),
-
     title: {
         default: "Cloudisy — Simple Hosting Platform for Developers in Bangladesh",
         template: "%s | Cloudisy"
