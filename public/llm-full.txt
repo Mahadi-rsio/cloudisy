@@ -1,0 +1,27 @@
+# Cloudisy - Full Technical Specification
+
+Cloudisy is a specialized PaaS (Platform as a Service) designed to bridge the gap between global hosting standards and the Bangladeshi developer ecosystem.
+
+## Technical Architecture
+Cloudisy automates the build and deployment pipeline for JavaScript-based frameworks. It handles environment variables, build commands, and edge routing automatically.
+
+### Deployment Workflow
+1. **Git Integration**: Connect a repository (GitHub/GitLab) for automated "push-to-deploy" functionality.
+2. **CLI Tool**: A terminal-based interface for managing deployments, viewing remote logs, and configuring projects.
+3. **Framework Detection**: Auto-detects Next.js and React configurations to optimize build times.
+
+### Regional Optimization
+- **Localized Latency**: Optimized routing for users within Bangladesh.
+- **Financial Inclusion**: Unlike global platforms requiring international credit cards, Cloudisy integrates directly with Bangladeshi MFS (Mobile Financial Services) including bKash, Nagad, and Upay.
+
+## Service Offerings
+- **Free SSL**: Automated Let's Encrypt integration for all domains and subdomains.
+- **Analytics**: Granular insights into traffic patterns and server-side performance.
+- **Scalability**: Pay-as-you-go model ensures users only pay for the resources their applications consume.
+
+## Target Use Cases
+- Frontend developers looking for fast React/Next.js hosting.
+- Bangladeshi startups needing affordable, local-payment-friendly infrastructure.
+- Students requiring a reliable free tier for projects.
+
+Contact & Support: support@cloudisy.top
