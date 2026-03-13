@@ -367,9 +367,9 @@ export default function NexusPlatform() {
                     </div>
 
                     <div className="hidden md:flex items-center gap-3">
-                        <a onClick={handleStart} className="text-sm border rounded-lg text-slate-400 hover:text-white transition px-4 py-2">Sign in</a>
+                        <a onClick={handleStart} className="text-sm border rounded-lg text-slate-400 hover:text-white transition px-4 py-2">Sign in (Beta)</a>
                         <button onClick={handleStart} className="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-all duration-200 shadow-lg shadow-blue-500/20">
-                            Get Started Free
+                            Join Us For Early Access
                         </button>
                     </div>
 
@@ -394,7 +394,7 @@ export default function NexusPlatform() {
                                 ))}
                                 <div className="pt-3 border-t border-white/5 mt-1 flex flex-col gap-2">
                                     <a href="#" className="text-center py-2.5 text-sm text-slate-400">Sign in</a>
-                                    <button onClick={handleStart} className="py-2.5 rounded-lg bg-blue-600 text-white font-semibold text-sm">Get Started Free</button>
+                                    <button onClick={handleStart} className="py-2.5 rounded-lg bg-blue-600 text-white font-semibold text-sm">Join Us</button>
                                 </div>
                             </div>
                         </motion.div>
@@ -413,7 +413,7 @@ export default function NexusPlatform() {
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-sm font-medium mb-8"
                 >
                     <Star size={13} className="fill-blue-400" />
-                    Introducing Edge Functions 2.0
+                    Cloudisy is in beta
                     <ChevronRight size={13} />
                 </motion.div>
 
@@ -441,7 +441,7 @@ export default function NexusPlatform() {
                     variants={fadeUp} initial="hidden" animate="show" custom={2}
                     className="mt-7 text-lg text-slate-400 max-w-xl mx-auto leading-relaxed"
                 >
-                    Nexus automates your entire deployment pipeline — from Git push to a globally distributed edge network in under 30 seconds.
+                    Cloudisy automates your entire deployment pipeline — from Git push to a globally distributed edge network in under 30 seconds
                 </motion.p>
 
                 <motion.div
@@ -449,12 +449,8 @@ export default function NexusPlatform() {
                     className="flex justify-center gap-4 mt-10 flex-wrap"
                 >
                     <button onClick={handleStart} className="group px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold flex items-center gap-2 transition-all duration-200 shadow-xl shadow-blue-500/25">
-                        Start Deploying Free
+                        Join Us Now
                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                    </button>
-                    <button onClick={handleStart} className="px-7 py-3.5 border border-slate-700 hover:border-slate-500 rounded-xl flex items-center gap-2 text-sm text-slate-300 hover:text-white transition-all duration-200 hover:bg-white/5">
-                        <Github size={16} />
-                        Deploy with GitHub
                     </button>
                 </motion.div>
 
@@ -479,7 +475,7 @@ export default function NexusPlatform() {
                             <span className="ml-2 text-slate-500 text-xs font-mono">Terminal</span>
                         </div>
                         <div className="px-5 py-5 font-mono text-sm text-left space-y-2">
-                            <div><span className="text-slate-500">$</span> <span className="text-blue-400">npx evolo</span> <span className="text-slate-300">deploy</span></div>
+                            <div><span className="text-slate-500">$</span> <span className="text-blue-400">npx cloudisy</span> <span className="text-slate-300">deploy</span></div>
                             <div className="text-slate-500">  ✓ Building project…</div>
                             <div className="text-slate-500">  ✓ Uploading to Cloud…</div>
                             <div className="text-green-400">  ✓ Deployed in 4.2s</div>
@@ -555,7 +551,7 @@ export default function NexusPlatform() {
                         variants={fadeUp} initial="hidden" whileInView="show" custom={2} viewport={{ once: true }}
                         className="text-slate-400 mt-3"
                     >
-                        Start for free. Scale as you grow.
+                        Start for free. Scale as you grow. We are Comming Soon
                     </motion.p>
                 </div>
 
@@ -576,17 +572,14 @@ export default function NexusPlatform() {
                     <h2 className="text-5xl md:text-6xl font-black text-white mb-5 leading-tight">
                         Ready to Ship Faster?
                     </h2>
-                    <p className="text-blue-200 mb-10 max-w-lg mx-auto">
-                        Join 2 million developers deploying with Nexus. Your first project is always free.
-                    </p>
                     <div className="flex justify-center gap-4 flex-wrap">
                         <button onClick={handleStart} className="group px-8 py-3.5 rounded-xl bg-white text-blue-700 font-bold text-sm hover:bg-blue-50 transition flex items-center gap-2 shadow-xl">
-                            Deploy Your First Project
+                            Sign In For Early Acces
                             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                         <button onClick={handleStart} className="px-8 py-3.5 rounded-xl border border-white/30 text-white font-semibold text-sm hover:bg-white/10 transition flex items-center gap-2">
                             <Github size={16} />
-                            Connect GitHub
+                            Connect GitHub To Join Us
                         </button>
                     </div>
                 </div>
