@@ -14,15 +14,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: `${baseUrl}/about`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
-            priority: .9
+            priority: 1
 
         },
         {
             url: `${baseUrl}/login`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
-            priority: 0.5,             // Lower priority than the landing page
+            priority: 0.5,
         },
+        {
+            url: `${baseUrl}/privacy`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 1
+        },
+        {
+            url: `${baseUrl}/terms`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 1,
+        },
+
     ]
 }
 
