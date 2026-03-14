@@ -31,5 +31,5 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           source: ".next,package.json"
-          target: "/home/${{ secrets.VPS_USER }}/root"
+          target: "/{{ secrets.VPS_USER }}"
 
